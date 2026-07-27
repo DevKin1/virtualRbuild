@@ -1,0 +1,119 @@
+---
+import { string } from "astro:schema";
+
+interface Props {
+  plan: string;
+  payment: number;
+  boarding: string;
+  storage: string;
+  analytics: string;
+  mode: string;
+  subPlan: string
+}
+
+const { plan, payment, boarding, storage, analytics, mode , subPlan} =
+  Astro.props as Props;
+---
+
+<div class="border border-neutral-600 p-10 rounded-lg mx-10">
+  <h3 class="text-4xl mb-6">{plan}<span class="text-xl bg-gradient-to-r from-[#EF6A14] to-[#441d04] text-transparent bg-clip-text">{subPlan}</span></h3>
+
+  <h4><span class="text-5xl">${payment}</span> <span class="text-neutral-600">/Month</span></h4>
+
+  <span class="flex gap-2 my-7"
+    ><svg
+      width="15px"
+      height="15px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"></g>
+
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M19 7.34189C18.6095 6.95136 17.9763 6.95136 17.5858 7.34189L10.3407 14.587C9.95016 14.9775 9.31699 14.9775 8.92647 14.587L6.38507 12.0456C5.99454 11.6551 5.36138 11.6551 4.97085 12.0456C4.58033 12.4361 4.58033 13.0693 4.97085 13.4598L7.51774 16C8.68969 17.1689 10.5869 17.1677 11.7574 15.9974L19 8.7561C19.3905 8.36558 19.3905 7.73241 19 7.34189Z"
+          fill="#ffff"></path>
+      </g>
+    </svg><p>{boarding}</p>
+  </span>
+
+  <span class="flex gap-2 my-7">
+    <svg
+      width="15px"
+      height="15px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"></g>
+
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M19 7.34189C18.6095 6.95136 17.9763 6.95136 17.5858 7.34189L10.3407 14.587C9.95016 14.9775 9.31699 14.9775 8.92647 14.587L6.38507 12.0456C5.99454 11.6551 5.36138 11.6551 4.97085 12.0456C4.58033 12.4361 4.58033 13.0693 4.97085 13.4598L7.51774 16C8.68969 17.1689 10.5869 17.1677 11.7574 15.9974L19 8.7561C19.3905 8.36558 19.3905 7.73241 19 7.34189Z"
+          fill="#ffff"></path>
+      </g>
+    </svg>
+    <p>{storage}</p>
+  </span>
+
+  <span class="flex gap-2 my-7">
+    <svg
+      width="15px"
+      height="15px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"></g>
+
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M19 7.34189C18.6095 6.95136 17.9763 6.95136 17.5858 7.34189L10.3407 14.587C9.95016 14.9775 9.31699 14.9775 8.92647 14.587L6.38507 12.0456C5.99454 11.6551 5.36138 11.6551 4.97085 12.0456C4.58033 12.4361 4.58033 13.0693 4.97085 13.4598L7.51774 16C8.68969 17.1689 10.5869 17.1677 11.7574 15.9974L19 8.7561C19.3905 8.36558 19.3905 7.73241 19 7.34189Z"
+          fill="#ffff"></path>
+      </g>
+    </svg>
+    <p>{analytics}</p>
+  </span>
+
+  <span class="flex gap-2 my-7">
+    <svg
+      width="15px"
+      height="15px"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"></g>
+
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M19 7.34189C18.6095 6.95136 17.9763 6.95136 17.5858 7.34189L10.3407 14.587C9.95016 14.9775 9.31699 14.9775 8.92647 14.587L6.38507 12.0456C5.99454 11.6551 5.36138 11.6551 4.97085 12.0456C4.58033 12.4361 4.58033 13.0693 4.97085 13.4598L7.51774 16C8.68969 17.1689 10.5869 17.1677 11.7574 15.9974L19 8.7561C19.3905 8.36558 19.3905 7.73241 19 7.34189Z"
+          fill="#ffff"></path>
+      </g>
+    </svg>
+    <p>{mode}</p>
+  </span>
+
+  <button class="border border-[#EF6A14] w-full mt-10 p-3 rounded-xl text-xl">Subscribe</button>
+</div>

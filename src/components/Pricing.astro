@@ -1,0 +1,11 @@
+---
+import PriceCard from "../components/PriceCard.astro"
+---
+<>
+  <h2 class="text-4xl lg:text-6xl text-center mb-7 mt-20">Pricing</h2>
+  <div class="flex flex-col md:flex-wrap lg:grid lg:grid-cols-3 w-full max-w-7xl mx-auto gap-10 mt-10">
+    <PriceCard plan="Free" payment={0} boarding="Private board sharing" storage= "5 Gb Storage" analytics="Web Analytics" mode="Private Mode"/>
+    <PriceCard plan="Pro" payment={10} boarding="Private board sharing" storage = "10 Gb Storage" analytics="Web Analytics (Advance)" mode="Private Mode" subPlan="(Most Popular)"/>
+    <PriceCard plan="Enterprise" payment={200} boarding="Private board sharing" storage = "Unlimited Gb Storage" analytics="High Performance Network" mode="Private Mode"/>
+  </div>
+</>

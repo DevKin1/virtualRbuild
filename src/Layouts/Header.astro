@@ -1,0 +1,404 @@
+---
+import "../styles/global.css";
+---
+
+<header>
+  <div class="navbar">
+    <div class="navbar-container">
+      <div class="logo-container">
+        <img
+          src="/images/logo.webp"
+          alt="virtualR logo"
+          class="logo-image"
+          loading="lazy"
+        />
+        <h2 class="logo-text">virtualR</h2>
+      </div>
+
+      <nav class="desktop-nav">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#workflow">Workflow</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop Buttons -->
+      <div class="desktop-buttons">
+        <button class="btn-primary">Sign Up</button>
+        <button class="btn-secondary">Sign In</button>
+      </div>
+
+      <!-- Mobile Hamburger Menu -->
+      <button 
+        class="hamburger-menu" 
+        id="menuToggle" 
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <svg 
+          width="40px" 
+          height="40px" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M17 9V18" 
+            stroke="#D96012" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+          />
+          <path 
+            d="M12 6V18" 
+            stroke="#D96012" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+          />
+          <path 
+            d="M7 12L7 18" 
+            stroke="#D96012" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <nav>
+        <ul class="mobile-nav-links">
+          <li><a href="#home" class="mobile-link">Home</a></li>
+          <li><a href="#features" class="mobile-link">Features</a></li>
+          <li><a href="#workflow" class="mobile-link">Workflow</a></li>
+          <li><a href="#pricing" class="mobile-link">Pricing</a></li>
+          <li><a href="#testimonials" class="mobile-link">Testimonials</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-buttons">
+        <button class="btn-primary mobile-btn">Sign Up</button>
+        <button class="btn-secondary mobile-btn">Sign In</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const isClickInside = menuToggle.contains(event.target) || mobileMenu.contains(event.target);
+        if (!isClickInside && mobileMenu.classList.contains('active')) {
+          mobileMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+          mobileMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.focus();
+        }
+      });
+
+      // Close menu when a link is clicked
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  /* ===== NAVBAR STYLES ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #4b5563;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ===== LOGO ===== */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-image {
+    width: 40px;
+    max-width: 40px;
+    height: auto;
+  }
+
+  .logo-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* ===== DESKTOP NAV ===== */
+  .desktop-nav {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    color: white;
+    font-size: 1.125rem;
+    list-style: none;
+  }
+
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links li a:hover {
+    color: #D96012;
+  }
+
+  .nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #D96012;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links li a:hover::after {
+    width: 100%;
+  }
+
+  /* ===== DESKTOP BUTTONS ===== */
+  .desktop-buttons {
+    display: none;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: #D96012;
+    border: 1px solid #D96012;
+    padding: 0.625rem 2rem;
+    border-radius: 0.75rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: #D96012;
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid #D96012;
+    padding: 0.625rem 2rem;
+    border-radius: 0.75rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .btn-secondary:hover {
+    background: #D96012;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  /* ===== HAMBURGER MENU ===== */
+  .hamburger-menu {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .hamburger-menu:hover {
+    transform: rotate(90deg);
+  }
+
+  .hamburger-menu svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.5rem;
+    gap: 1.5rem;
+    border-top: 1px solid #4b5563;
+    animation: slideDown 0.3s ease;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .mobile-nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    padding: 0.5rem 0;
+    display: block;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-nav-links li a:hover {
+    color: #D96012;
+    padding-left: 0.5rem;
+  }
+
+  .mobile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .mobile-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+  
+  /* Tablet and above (lg: 1024px) */
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: flex;
+    }
+
+    .desktop-buttons {
+      display: flex;
+    }
+
+    .hamburger-menu {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: none !important;
+    }
+
+    .navbar-container {
+      padding: 0.5rem 6.25rem; /* px-25 equivalent */
+    }
+  }
+
+  /* Medium screens (between 768px and 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .navbar-container {
+      padding: 0.5rem 2rem;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Small screens (below 768px) */
+  @media (max-width: 767px) {
+    .navbar-container {
+      padding: 0.5rem 1rem;
+    }
+
+    .logo-text {
+      font-size: 1.125rem;
+    }
+
+    .logo-image {
+      width: 32px;
+      max-width: 32px;
+    }
+
+    .hamburger-menu svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  /* Extra small screens (below 480px) */
+  @media (max-width: 480px) {
+    .logo-text {
+      font-size: 1rem;
+    }
+
+    .logo-image {
+      width: 28px;
+      max-width: 28px;
+    }
+  }
+</style>
